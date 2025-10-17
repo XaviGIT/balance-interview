@@ -19,7 +19,7 @@ const envSchema = z.object({
         .default('development'),
     APP_STAGE: z.enum(['dev', 'test', 'prod']),
     PORT: z.coerce.number().positive().default(3000),
-    DATABASE_URL: z.string().startsWith('postgresql://')
+    // DATABASE_URL: z.string().startsWith('postgresql://')
 })
 
 export type Env = z.infer<typeof envSchema>;

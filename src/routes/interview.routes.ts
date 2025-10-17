@@ -1,5 +1,5 @@
 import { Router } from "express";
-import z, { uuid } from "zod";
+import z from "zod";
 
 import { getInterview, postInterview } from "../controllers/interview.controller.ts";
 import { validateParams, validateBody } from "../middleware/validation.ts";
@@ -15,12 +15,8 @@ const postInterviewSchema = z.object({
     other: z.number()
 })
 
-const searchQueryParamsSchema = z.object({
-    term: z.string().min(2)
-})
+router.get('/', validateParams(getInterviewSchema), getInterview)
 
-router.get('/:something', validateParams(getInterviewSchema), getInterview)
-
-router.post('/', validateBody(postInterviewSchema), postInterview);
+router.post('/test', validateBody(postInterviewSchema), postInterview);
 
 export default router;

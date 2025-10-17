@@ -18,7 +18,9 @@ app.get('/api/v1/health', (_, res) => {
     res.sendStatus(200);
 });
 
-app.use('/api/v1/interview', interviewRoutes);
+app.use('/api/v1/interview', (_, res) => {
+    res.sendStatus(200);
+});
 
 export { app };
 export default app;
